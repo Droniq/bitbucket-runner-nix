@@ -180,7 +180,10 @@ in
       name: runner:
       lib.nameValuePair "bitbucket-runner-${name}" {
         image = "docker-public.packages.atlassian.com/sox/atlassian/bitbucket-pipelines-runner";
-        volumes = [ "/tmp:${runner.workingDirectory}" ];
+        volumes = [ 
+          "/var/run/docker.sock:/var/run/docker.sock"
+          "/tmp:${runner.workingDirectory}" 
+        ];
         environmentFiles = lib.optional (runner.environmentFile != null) runner.environmentFile;
         environment =
           {
