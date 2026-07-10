@@ -189,8 +189,8 @@ in
         environmentFiles = lib.optional (runner.environmentFile != null) runner.environmentFile;
         environment =
           {
-            ACCOUNT_UUID = "{${runner.accountUuid}}";
-            RUNNER_UUID = "{${runner.runnerUuid}}";
+            ACCOUNT_UUID = "${runner.accountUuid}";
+            RUNNER_UUID = "${runner.runnerUuid}";
             WORKING_DIRECTORY = runner.workingDirectory;
           }
           // lib.optionalAttrs (runner.OAuthClientId != null && runner.OAuthClientSecret != null) {
