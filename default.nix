@@ -183,6 +183,7 @@ in
         image = "docker-public.packages.atlassian.com/sox/atlassian/bitbucket-pipelines-runner";
         volumes = [ 
           "/var/run/docker.sock:/var/run/docker.sock"
+          "/var/lib/docker/containers:/var/lib/docker/containers:ro"
           "/tmp:${runner.workingDirectory}" 
         ];
         environmentFiles = lib.optional (runner.environmentFile != null) runner.environmentFile;
