@@ -175,6 +175,7 @@ in
 
     virtualisation.docker.enable = true;
     virtualisation.oci-containers.backend = "docker";
+    users.users.${cfg.user}.extraGroups = [ "docker" ];
 
     virtualisation.oci-containers.containers = lib.mapAttrs' (
       name: runner:
