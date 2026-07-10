@@ -173,6 +173,9 @@ in
       }
     ) (lib.filterAttrs (_: runner: runner.runtime == "linux-shell") cfg.runners);
 
+    virtualisation.docker.enable = true;
+    virtualisation.oci-containers.backend = "docker";
+
     virtualisation.oci-containers.containers = lib.mapAttrs' (
       name: runner:
       lib.nameValuePair "bitbucket-runner-${name}" {
