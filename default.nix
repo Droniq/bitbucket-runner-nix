@@ -124,6 +124,7 @@ in
       home = "/home/${cfg.user}";
       group = cfg.group;
       description = "Bitbucket Runner User";
+      extraGroups = [ "docker" ];
     };
 
     users.groups.${cfg.group} = { };
@@ -175,7 +176,6 @@ in
 
     virtualisation.docker.enable = true;
     virtualisation.oci-containers.backend = "docker";
-    users.users.${cfg.user}.extraGroups = [ "docker" ];
 
     virtualisation.oci-containers.containers = lib.mapAttrs' (
       name: runner:
