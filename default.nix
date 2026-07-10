@@ -181,8 +181,8 @@ in
         environmentFiles = lib.optional (runner.environmentFile != null) runner.environmentFile;
         environment =
           {
-            ACCOUNT_UUID = runner.accountUuid;
-            RUNNER_UUID = runner.runnerUuid;
+            ACCOUNT_UUID = "{${runner.accountUuid}}";
+            RUNNER_UUID = "{${runner.runnerUuid}}";
             WORKING_DIRECTORY = runner.workingDirectory;
           }
           // lib.optionalAttrs (runner.OAuthClientId != null && runner.OAuthClientSecret != null) {
@@ -190,7 +190,7 @@ in
             OAUTH_CLIENT_SECRET = runner.OAuthClientSecret;
           }
           // lib.optionalAttrs (runner.repositoryUuid != null) {
-            REPOSITORY_UUID = runner.repositoryUuid;
+            REPOSITORY_UUID = "{${runner.repositoryUuid}}";
           };
       }
     ) (lib.filterAttrs (_: runner: runner.runtime == "linux-docker") cfg.runners);
